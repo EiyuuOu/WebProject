@@ -17,16 +17,7 @@
 <body>
 
 	<!-- Header -->
-	<header id="header">
-		<a href="index.jsp" class="title">JSP Exercise</a>
-		<nav>
-			<ul>
-				<li><a href="index.jsp">Home</a></li>
-				<li><a href="signup.jsp" class="active">Signup</a></li>
-				<li><a href="list">List</a></li>
-			</ul>
-		</nav>
-	</header>
+	<%@include file="_header.jsp"%> 
 
 	<!-- Wrapper -->
 	<div id="wrapper">
@@ -39,33 +30,33 @@
 					
 						<div class="6u 12u$(xsmall)">
 							<input type="text" name="firstname" id="firstname" value=""
-								placeholder="First Name" />
+								placeholder="First Name" required/>
 						</div>
 						</br>
 						<div class="6u 12u$(xsmall)">
 							<input type="text" name="lastname" id="lastname" value=""
-								placeholder="Last Name" />
+								placeholder="Last Name" required/>
 						</div>
 						</br>
 						
 						<div class="6u 12u$(xsmall)">
 							<input type="text" name="username" id="username" value=""
-								placeholder="Username" />
+								placeholder="Username" required/>
 						</div>
 						</br>
 						<div class="6u 12u$(xsmall)">
 							<input type="password" name="password" id="password" value=""
-								placeholder="Password" />
+								placeholder="Password" required/>
 						</div>
 						</br>
 						<div class="6u 12u$(xsmall)">
 							<input type="password" name="password2" id="password2" value=""
-								placeholder="Verify Password" />
+								placeholder="Verify Password" required/>
 						</div>
 						</br>
 						<div class="6u$ 12u$(xsmall)">
 							<input type="email" name="email" id="email" value=""
-								placeholder="Email" />
+								placeholder="Email" required/>
 						</div>
 						</br>
 						<div class="6u 12u$(xsmall)">
@@ -97,20 +88,6 @@
 				
 				
 				
-				<p>Donec eget ex magna. Interdum et malesuada fames ac ante
-					ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet
-					dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim
-					auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit
-					amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a
-					elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris.
-					Curabitur sapien risus, commodo eget turpis at, elementum convallis
-					elit. Pellentesque enim turpis, hendrerit tristique.</p>
-				<p>Interdum et malesuada fames ac ante ipsum primis in faucibus.
-					Pellentesque venenatis dolor imperdiet dolor mattis sagittis.
-					Praesent rutrum sem diam, vitae egestas enim auctor sit amet.
-					Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien
-					risus, commodo eget turpis at, elementum convallis elit.
-					Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
 			</div>
 		</section>
 

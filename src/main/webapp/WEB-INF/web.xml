@@ -10,8 +10,18 @@
   	<description></description>
   	<servlet-class>com.fdmgroup.controller.RegistrationController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>LoginErrorController</servlet-name>
+  	<display-name>LoginErrorController</display-name>
+  	<description></description>
+  	<servlet-class>com.fdmgroup.controller.LoginErrorController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>RegistrationController</servlet-name>
   	<url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LoginErrorController</servlet-name>
+  	<url-pattern>/loginerror</url-pattern>
   </servlet-mapping>
 </web-app>

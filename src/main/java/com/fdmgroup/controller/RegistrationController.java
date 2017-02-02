@@ -3,6 +3,7 @@ package com.fdmgroup.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.persistence.NoResultException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,30 +19,34 @@ import com.fdmgroup.model.Users;
 public class RegistrationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDao dao;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RegistrationController() {
-        super();
-        // TODO Auto-generated constructor stub
-        this.dao = new UserDaoImpl();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public RegistrationController() {
+		super();
+		// TODO Auto-generated constructor stub
+		this.dao = new UserDaoImpl();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.sendRedirect("signup.jsp");
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//User Registration
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// User Registration
 		PrintWriter out = response.getWriter();
-		
+
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String username = request.getParameter("username");
@@ -51,21 +56,37 @@ public class RegistrationController extends HttpServlet {
 		String balance = request.getParameter("balance");
 		double balance1 = Double.valueOf(balance);
 		/**
-		 * Todo: Use Digest to encrypt passwords
-		 * password 1 equals pw 2
-		 * email unique check
+		 * Todo: Use Digest to encrypt passwords password 1 equals pw 2 email
+		 * unique check
 		 * 
-		 * Loginpage -> Success
-		 * 			 -> error
+		 * Loginpage -> Success -> error
 		 */
+
+		Users user = dao.getUser(email);
+		String email2 = user.getEmail();
+		PrintWriter out2 = response.getWriter();
 		
+
+//		if (!password.equals(password2)) {
+//
+//			String str = request.getParameter("str1");
+//			request.getSession().setAttribute("str1", "Password and Verify Password didnt match, ");
+//			getServletContext().getRequestDispatcher("/loginerror.jsp").forward(request, response);
+//		} 
+//		else if (email.equals(email2)) {
+//			String str = request.getParameter("str1");
+//			request.getSession().setAttribute("str1", "Email already exists, ");
+//			getServletContext().getRequestDispatcher("/loginerror.jsp").forward(request, response);
+//		} else {
+//			
 		
-		
-		Users user = new Users(firstname, lastname, username, password, email, balance1); 
-		dao.newUser(user);
-		
-		out.println("<h1>Thanks for registering!</h1>");
-		
+
+//		Users user1 = new Users(firstname, lastname, username, password, email, balance1);
+//		dao.newUser(user1);
+//
+//		out.println("<h1>Thanks for registering!</h1>");
+//	    response.sendRedirect("index.jsp");
+		//}
 	}
 
 }

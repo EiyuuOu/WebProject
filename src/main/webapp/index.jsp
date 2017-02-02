@@ -16,17 +16,8 @@
 	</head>
 	<body>
 	
-		<!-- Header -->
-	<header id="header">
-		<a href="index.jsp" class="title">JSP Exercise</a>
-		<nav>
-			<ul>
-				<li><a href="index.jsp">Home</a></li>
-				<li><a href="signup.jsp" class="active">Signup</a></li>
-				<li><a href="Rates.jsp">List</a></li>
-			</ul>
-		</nav>
-	</header>
+	<%@include file="_header.jsp"%> 
+	
 
 		<!-- Sidebar -->
 	<!-- 		<section id="sidebar">
@@ -62,13 +53,7 @@
 				
 
 		<!-- Footer -->
-			<footer id="footer" class="wrapper style1-alt">
-				<div class="inner">
-					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
+		<%@include file="_footer.jsp"%> 	
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
