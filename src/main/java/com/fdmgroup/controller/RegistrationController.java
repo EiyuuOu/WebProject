@@ -55,6 +55,8 @@ public class RegistrationController extends HttpServlet {
 		String email = request.getParameter("email");
 		String balance = request.getParameter("balance");
 		double balance1 = Double.valueOf(balance);
+		
+		
 		/**
 		 * Todo: Use Digest to encrypt passwords password 1 equals pw 2 email
 		 * unique check
@@ -62,31 +64,41 @@ public class RegistrationController extends HttpServlet {
 		 * Loginpage -> Success -> error
 		 */
 
-		Users user = dao.getUser(email);
-		String email2 = user.getEmail();
-		PrintWriter out2 = response.getWriter();
+		try{
+				
+		Users user1 = dao.getUser(email);
+		String email2 = user1.getEmail();
 		
-
-//		if (!password.equals(password2)) {
-//
-//			String str = request.getParameter("str1");
-//			request.getSession().setAttribute("str1", "Password and Verify Password didnt match, ");
-//			getServletContext().getRequestDispatcher("/loginerror.jsp").forward(request, response);
-//		} 
-//		else if (email.equals(email2)) {
-//			String str = request.getParameter("str1");
-//			request.getSession().setAttribute("str1", "Email already exists, ");
-//			getServletContext().getRequestDispatcher("/loginerror.jsp").forward(request, response);
-//		} else {
-//			
+		if (email.equals(email2)) {
+			
+			request.getSession().setAttribute("str1", "Email already exists, ");
+			getServletContext().getRequestDispatcher("/loginerror.jsp").forward(request, response);
+		} 
 		
+		
+		} catch (NoResultException e){
+			
+			if (!password.equals(password2)) {
+				
+				
+				request.getSession().setAttribute("str1", "Password and Verify Password didnt match, ");
+				getServletContext().getRequestDispatcher("/loginerror.jsp").forward(request, response);
+			} 
+			
+			else{
+				Users user = new Users(firstname, lastname, username, password, email, balance1);
+				dao.newUser(user);
+				
+				
+				request.getSession().setAttribute("str1","Hi "+ user.getFirstname()+" ! <br> Welcome to the team!");
+				getServletContext().getRequestDispatcher("/loginsuccess.jsp").forward(request, response);
+			}
+			
+			
+		}
 
-//		Users user1 = new Users(firstname, lastname, username, password, email, balance1);
-//		dao.newUser(user1);
-//
-//		out.println("<h1>Thanks for registering!</h1>");
-//	    response.sendRedirect("index.jsp");
-		//}
+		
+			
+	
 	}
-
 }

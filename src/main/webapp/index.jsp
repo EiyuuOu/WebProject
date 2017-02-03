@@ -40,9 +40,11 @@
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
 							<h1>JSP Exercise</h1>
-							<p>Another Registration Page<br />
-							Feel Free to Sign up  <a href="signup.jsp">here</a>.<br/>
-							Get a List of all Employees <a href="list">here</a>.</p>
+							<h3>Another Registration Page</h3>
+							<br>
+							<p>Feel Free to Sign up  <a href="signup.jsp">here</a>.</p>
+						
+							<p>Already a Member? Sign in <a href="login.jsp">here</a>.</p>
 							<ul class="actions">
 								<li><a href="signup.jsp" class="button scrolly">Or here, i dont care</a></li>
 							</ul>

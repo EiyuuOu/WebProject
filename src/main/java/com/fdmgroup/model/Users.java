@@ -1,10 +1,14 @@
 package com.fdmgroup.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Users {
@@ -19,6 +23,10 @@ public class Users {
 	@Column(unique=true)
 	private String email;
 	private double balance;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(updatable = false)
+	private Date registerDate;
+	private Date lastLoggedIn;
 	
 	public Users(){
 		
@@ -33,6 +41,8 @@ public class Users {
 		this.email = email;
 		//Default balance set to 200
 		this.balance = balance;
+		this.registerDate = new Date();
+		this.lastLoggedIn = new Date();
 	}
 
 	public int getId() {
@@ -89,6 +99,22 @@ public class Users {
 
 	public void setBalance(double balance) {
 		this.balance = balance;
+	}
+
+	public Date getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(Date registerDate) {
+		this.registerDate = registerDate;
+	}
+
+	public Date getLastLoggedIn() {
+		return lastLoggedIn;
+	}
+
+	public void setLastLoggedIn(Date lastLoggedIn) {
+		this.lastLoggedIn = lastLoggedIn;
 	}
 
 	@Override

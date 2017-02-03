@@ -42,23 +42,50 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 	
-	public Users updateUser(String email) {
-		// TODO Auto-generated method stub
-		return null;
+	public int updateUser(String email, Users users) {
+		EntityManager em = getEntityManager();
+		em.getTransaction().begin();
+		
+		Query query = em.createQuery("update Users users"
+				+ "set users.firstname=:firstname,"
+				+ "users.lastname=:lastname,"
+				+ "users.username=:username,"
+				+ "users.password=:password,"
+				+ "users.email=:email,"
+				+ "where users.email=:email");
+		query.setParameter("firstname", users.getFirstname());
+		query.setParameter("lastname", users.getLastname());
+		query.setParameter("username", users.getUsername());
+		query.setParameter("password", users.getPassword());
+		query.setParameter("email", users.getEmail());
+		
+		int result = query.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+		
+		return result;
 	}
 	public boolean deleteUser(String email) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	public List<Users> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = getEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createQuery("select users from Users users", Users.class);
+		
+		List<Users> usersList = query.getResultList();
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+		
+		return usersList;
 	}
 
 
 //	public static void main(String[] args) {
 //		UserDaoImpl dao = new UserDaoImpl();
-//		Users user = dao.getUser("test9@msn.com");
+//		Users user = dao.getUser("abc@msn.com");
 //		System.out.println(user);
 //		
 //	}
