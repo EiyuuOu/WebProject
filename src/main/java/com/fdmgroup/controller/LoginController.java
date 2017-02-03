@@ -55,7 +55,7 @@ public class LoginController extends HttpServlet {
 		if(!email.equals(user.getEmail()) || !password.equals(user.getPassword())){
 			
 			request.getSession().setAttribute("str1", "Email and/or Password didnt match, ");
-			getServletContext().getRequestDispatcher("/loginerror.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
 		} 
 		else if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
 			request.getSession().setAttribute("str1"," <br> Welcome back "+user.getFirstname()+" !");

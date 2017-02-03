@@ -57,6 +57,12 @@
 						<div class="6u$ 12u$(xsmall)">
 							<input type="email" name="email" id="email" value=""
 								placeholder="Email" required/>
+							<% 
+							if(request.getSession().getAttribute("str1")!=null){
+								out.print("<label>"+request.getSession().getAttribute("str1")+"</label>");
+							}
+								
+							%>
 						</div>
 						</br>
 						<div class="6u 12u$(xsmall)">

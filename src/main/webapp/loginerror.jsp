@@ -21,6 +21,7 @@
 String  str2  = (String) session.getAttribute("str1");        
 %>
 
+<!-- Body -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
 							<h1>Error!</h1>

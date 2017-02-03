@@ -42,4 +42,10 @@ public class AdminDao implements AdminUserDao {
 		return 0;
 	}
 
+	@Override
+	public int changeBalance(String email, Users users) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
