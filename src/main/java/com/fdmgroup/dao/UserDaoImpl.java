@@ -65,9 +65,17 @@ public class UserDaoImpl implements UserDao{
 		
 		return result;
 	}
-	public boolean deleteUser(String email) {
-		// TODO Auto-generated method stub
-		return false;
+	public int deleteUser(String email) {
+		EntityManager em = getEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createQuery("delete users from Users users where users.email=:email", Users.class);
+		query.setParameter("email", email);
+		int result = query.executeUpdate();
+		em.getTransaction().commit();
+		em.close();
+		
+		return result;
+		
 	}
 	public List<Users> getAllUsers() {
 		EntityManager em = getEntityManager();
