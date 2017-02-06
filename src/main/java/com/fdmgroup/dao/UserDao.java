@@ -8,8 +8,8 @@ public interface UserDao {
 	
 	public boolean newUser(Users user);
 	public Users getUser(String email);
-	public int updateUser(String email, Users users);
-	
-	
+	//public int updateUser(String email, Users users);
+	//public int deleteUser(String email);
+	//public List<Users> getAllUsers();
 
 }

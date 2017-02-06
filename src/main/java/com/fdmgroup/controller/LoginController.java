@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fdmgroup.dao.UserDao;
 import com.fdmgroup.dao.UserDaoImpl;
+import com.fdmgroup.model.Roles;
 import com.fdmgroup.model.Users;
 
 /**
@@ -49,22 +50,37 @@ public class LoginController extends HttpServlet {
 		
 		
 		
+		
 		try{	
 		
 		Users user = dao.getUser(email);
 		if(!email.equals(user.getEmail()) || !password.equals(user.getPassword())){
 			
-			request.getSession().setAttribute("str1", "Email and/or Password didnt match, ");
-			getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
+			request.getSession().setAttribute("str6", "<font color=#990000>Email and/or Password didnt match</font>");
+			response.sendRedirect("login.jsp");
+			//getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
 		} 
 		else if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
-			request.getSession().setAttribute("str1"," <br> Welcome back "+user.getFirstname()+" !");
-			getServletContext().getRequestDispatcher("/loginsuccess.jsp").forward(request, response);
+			request.getSession().setAttribute("user", user);
+			
+			
+			if(user.getRole().equals(Roles.USER)){
+				
+				request.getSession().setAttribute("str4"," <br> Welcome back "+user.getFirstname()+" ! "+user.getRole());
+				getServletContext().getRequestDispatcher("/loginsuccess.jsp").forward(request, response);
+				
+			}
+			if(user.getRole().equals(Roles.ADMIN)){
+				request.getSession().setAttribute("str5", "<br> Welcome back Grandmaster "+user.getFirstname()+" !");
+				getServletContext().getRequestDispatcher("/adminpanel.jsp").forward(request, response);
+			}
+			
 		}
 		
 		} catch (NoResultException e){
-			request.getSession().setAttribute("str1", "Email and/or Password didnt match, ");
-			getServletContext().getRequestDispatcher("/loginerror.jsp").forward(request, response);
+			request.getSession().setAttribute("str6", "<font color=#990000>Email and/or Password didnt match</font>");
+			response.sendRedirect("login.jsp");
+			//getServletContext().getRequestDispatcher("/loginerror.jsp").forward(request, response);
 			
 		}
 	}

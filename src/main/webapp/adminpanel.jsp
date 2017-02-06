@@ -18,18 +18,15 @@
 <%@include file="_header.jsp"%>
  
 <% 
-String  str2  = (String) session.getAttribute("str4");   
-
+String  str2  = (String) session.getAttribute("str5");        
 %>
 
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
-							<h1>Success!</h1>
-							<h2> <%= str2
-											%> </h2>
-							
+							<h1>Thats the admin panel</h1>
+							<h2> <%= str2 %> </h2>
 							<br>
-							<h3>View upcoming Matches <a href="upcomingmatches.jsp">here</a></h3>
+							<h3>Blabla <a href="upcomingmatches.jsp">here</a></h3>
 							
 						</div>
 					</section>

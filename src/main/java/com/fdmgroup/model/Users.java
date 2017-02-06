@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,6 +24,8 @@ public class Users {
 	//private String password2;
 	@Column(unique=true)
 	private String email;
+	@Enumerated(EnumType.STRING)
+	private Roles role;
 	private double balance;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(updatable = false)
@@ -39,8 +43,8 @@ public class Users {
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		//Default balance set to 200
 		this.balance = balance;
+		this.role = Roles.USER;
 		this.registerDate = new Date();
 		this.lastLoggedIn = new Date();
 	}
@@ -99,6 +103,14 @@ public class Users {
 
 	public void setBalance(double balance) {
 		this.balance = balance;
+	}
+
+	public Roles getRole() {
+		return role;
+	}
+
+	public void setRole(Roles role) {
+		this.role = role;
 	}
 
 	public Date getRegisterDate() {

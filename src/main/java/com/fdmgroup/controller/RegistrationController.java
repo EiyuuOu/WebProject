@@ -11,10 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fdmgroup.dao.UserDao;
 import com.fdmgroup.dao.UserDaoImpl;
+import com.fdmgroup.model.Roles;
 import com.fdmgroup.model.Users;
 
 /**
  * Servlet implementation class RegistrationController
+ * 
+ * 
+ * 
+ * 
  */
 public class RegistrationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -64,6 +69,8 @@ public class RegistrationController extends HttpServlet {
 		 * Loginpage -> Success -> error
 		 */
 
+		//Admin Email
+		String email3 = "Niko@bla.de";
 		try{
 				
 		Users user1 = dao.getUser(email);
@@ -71,8 +78,9 @@ public class RegistrationController extends HttpServlet {
 		
 		if (email.equals(email2)) {
 			
-			request.getSession().setAttribute("str1", "Email already exists, ");
-			getServletContext().getRequestDispatcher("/loginerror.jsp").forward(request, response);
+			request.getSession().setAttribute("str1", "<font color=#990000>Email already exists</font>");
+			response.sendRedirect("signup.jsp");
+			//getServletContext().getRequestDispatcher("/loginerror.jsp").forward(request, response);
 		} 
 		
 		
@@ -81,16 +89,23 @@ public class RegistrationController extends HttpServlet {
 			if (!password.equals(password2)) {
 				
 				
-				request.getSession().setAttribute("str1", "Password and Verify Password didnt match, ");
-				getServletContext().getRequestDispatcher("/loginerror.jsp").forward(request, response);
+				request.getSession().setAttribute("str2", "<font color=#990000>Password and Verify Password didnt match</font>");
+				response.sendRedirect("signup.jsp");
+				//getServletContext().getRequestDispatcher("/loginerror.jsp").forward(request, response);
 			} 
 			
 			else{
 				Users user = new Users(firstname, lastname, username, password, email, balance1);
+				
+				if(email.contains(email3)){
+					user.setRole(Roles.ADMIN);
+				}
+				
 				dao.newUser(user);
 				
 				
-				request.getSession().setAttribute("str1","Hi "+ user.getFirstname()+" ! <br> Welcome to the team!");
+				
+				request.getSession().setAttribute("str4","Hi "+ user.getFirstname()+" ! <br> Welcome to the team!");
 				getServletContext().getRequestDispatcher("/loginsuccess.jsp").forward(request, response);
 			}
 			

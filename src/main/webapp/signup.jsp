@@ -52,6 +52,12 @@
 						<div class="6u 12u$(xsmall)">
 							<input type="password" name="password2" id="password2" value=""
 								placeholder="Verify Password" required/>
+								<% 
+							if(request.getSession().getAttribute("str2")!=null){
+								out.print("<label>"+request.getSession().getAttribute("str2")+"</label>");
+							}
+								
+							%>
 						</div>
 						</br>
 						<div class="6u$ 12u$(xsmall)">
