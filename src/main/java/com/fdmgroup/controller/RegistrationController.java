@@ -52,6 +52,7 @@ public class RegistrationController extends HttpServlet {
 		// User Registration
 		PrintWriter out = response.getWriter();
 
+		
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String username = request.getParameter("username");

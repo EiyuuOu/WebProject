@@ -23,11 +23,11 @@
 				<li><a href="upcomingmatches.jsp">Matches</a></li>
 				<% 
 							if(request.getSession().getAttribute("balance")!=null){
-								out.print("<li><a href=#>"+request.getSession().getAttribute("balance")+" £ </a></li>");
+								out.print("<li><a href=logout>"+request.getSession().getAttribute("balance")+" £ </a></li>");
 							}
 							
 							if(request.getSession().getAttribute("username")!=null){
-								out.print("<li><a href=logout>"+request.getSession().getAttribute("username")+"</li>");
+								out.print("<li><a href=userupdate.jsp>"+request.getSession().getAttribute("username")+"</li>");
 							}	
 				%>
 			</ul>

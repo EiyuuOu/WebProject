@@ -42,22 +42,22 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 	
-	public int updateUser(String email, Users users) {
+	public int updateUser(int id, Users users) {
 		EntityManager em = getEntityManager();
 		em.getTransaction().begin();
 		
-		Query query = em.createQuery("update Users users"
-				+ "set users.firstname=:firstname,"
-				+ "users.lastname=:lastname,"
-				+ "users.username=:username,"
-				+ "users.password=:password,"
-				+ "users.email=:email,"
-				+ "where users.email=:email");
+		Query query = em.createQuery("update Users "
+				+ "set firstname=:firstname,"
+				+ "lastname=:lastname,"
+				+ "username=:username,"
+	
+				+ "email=:email"
+				+ "where id=:id");
 		query.setParameter("firstname", users.getFirstname());
 		query.setParameter("lastname", users.getLastname());
 		query.setParameter("username", users.getUsername());
-		query.setParameter("password", users.getPassword());
 		query.setParameter("email", users.getEmail());
+		query.setParameter("id", id);
 		
 		int result = query.executeUpdate();
 		em.getTransaction().commit();
