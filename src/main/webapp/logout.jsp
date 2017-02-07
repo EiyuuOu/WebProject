@@ -10,29 +10,26 @@
 		<link rel="stylesheet" href="css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<meta http-equiv="Refresh" content="5;url=index.jsp">
 	</head>
 <body>
 
-	<!-- Header -->
-	<header id="header">
-		<a href="index.jsp" class="title">JSP Exercise</a>
-		<nav>
-			<ul>
-				<li><a href="index.jsp">Home</a></li>
-				<li><a href="signup.jsp">Signup</a></li>
-				<li><a href="upcomingmatches.jsp">Matches</a></li>
-				<% 
-							if(request.getSession().getAttribute("balance")!=null){
-								out.print("<li><a href=#>"+request.getSession().getAttribute("balance")+" £ </a></li>");
-							}
+<!-- Header -->
+<%@include file="_header.jsp"%>
+ 
+
+
+<!-- Body -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>Thanks for the visit!</h1>
+							<h2>You'll get redirected to the index, just in case you change your mind</h2>
 							
-							if(request.getSession().getAttribute("username")!=null){
-								out.print("<li><a href=logout>"+request.getSession().getAttribute("username")+"</li>");
-							}	
-				%>
-			</ul>
-		</nav>
-	</header>
+						</div>
+					</section>
+
+<!-- Footer -->
+<%@include file="_footer.jsp"%> 
 
 </body>
 </html>

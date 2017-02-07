@@ -10,29 +10,31 @@
 		<link rel="stylesheet" href="css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		
 	</head>
 <body>
 
-	<!-- Header -->
-	<header id="header">
-		<a href="index.jsp" class="title">JSP Exercise</a>
-		<nav>
-			<ul>
-				<li><a href="index.jsp">Home</a></li>
-				<li><a href="signup.jsp">Signup</a></li>
-				<li><a href="upcomingmatches.jsp">Matches</a></li>
-				<% 
-							if(request.getSession().getAttribute("balance")!=null){
-								out.print("<li><a href=#>"+request.getSession().getAttribute("balance")+" £ </a></li>");
-							}
+<!-- Header -->
+<%@include file="_header.jsp"%>
+ 
+<% 
+String  str2  = (String) session.getAttribute("str5");        
+%>
+
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>Thats the admin panel</h1>
+							<h2> <%= str2 %> </h2>
+							<br>
+							<h3>Click <a href="AdminUser">here</a> to change Userdata <br>
+								Click <a href="WEB-INF/admin/adminpagematches.jsp">here</a> to change matches <br>
+								Click <a href="WEB-INF/admin/adminpageplayer.jsp">here</a> to change Players</h3>
 							
-							if(request.getSession().getAttribute("username")!=null){
-								out.print("<li><a href=logout>"+request.getSession().getAttribute("username")+"</li>");
-							}	
-				%>
-			</ul>
-		</nav>
-	</header>
+						</div>
+					</section>
+
+<!-- Footer -->
+<%@include file="_footer.jsp"%> 
 
 </body>
 </html>

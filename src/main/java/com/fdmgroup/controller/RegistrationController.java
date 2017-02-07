@@ -64,9 +64,6 @@ public class RegistrationController extends HttpServlet {
 		
 		/**
 		 * Todo: Use Digest to encrypt passwords password 1 equals pw 2 email
-		 * unique check
-		 * 
-		 * Loginpage -> Success -> error
 		 */
 
 		//Admin Email

@@ -65,14 +65,16 @@ public class LoginController extends HttpServlet {
 			
 			
 			if(user.getRole().equals(Roles.USER)){
-				
-				request.getSession().setAttribute("str4"," <br> Welcome back "+user.getFirstname()+" ! "+user.getRole());
+				request.getSession().setAttribute("username", user.getUsername());
+				request.getSession().setAttribute("balance", user.getBalance());
+				request.getSession().setAttribute("str4"," <br> Welcome back "+user.getFirstname()+" ! ");
 				getServletContext().getRequestDispatcher("/loginsuccess.jsp").forward(request, response);
 				
 			}
 			if(user.getRole().equals(Roles.ADMIN)){
 				request.getSession().setAttribute("str5", "<br> Welcome back Grandmaster "+user.getFirstname()+" !");
-				getServletContext().getRequestDispatcher("/adminpanel.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/WEB-INF/admin/adminpanel.jsp").forward(request, response);
+				
 			}
 			
 		}

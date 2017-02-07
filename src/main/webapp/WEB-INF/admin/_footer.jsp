@@ -10,29 +10,15 @@
 		<link rel="stylesheet" href="css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		
 	</head>
 <body>
 
-<!-- Header -->
-<%@include file="_header.jsp"%>
- 
-<% 
-String  str2  = (String) session.getAttribute("str5");        
-%>
-
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
-						<div class="inner">
-							<h1>Thats the admin panel</h1>
-							<h2> <%= str2 %> </h2>
-							<br>
-							<h3>Blabla <a href="upcomingmatches.jsp">here</a></h3>
-							
-						</div>
-					</section>
-
-<!-- Footer -->
-<%@include file="_footer.jsp"%> 
-
+<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
 </body>
 </html>

@@ -14,10 +14,8 @@ public interface AdminUserDao extends UserDao {
 	// dont extend UserDao
 	// create 2 interfaces for admin (for user and for player)
 	//public boolean newUser(Users users);
-	public int deleteUser(String email);
-	public List<Users> getAllUsers();
-	public int changeBalance(String email, Users users);
-	int updateUser(String email, Users users);
+	public int changeBalance(int id, double newBalance);
+	
 	
 	
 	/*

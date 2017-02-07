@@ -10,28 +10,20 @@
 		<link rel="stylesheet" href="css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<meta http-equiv="Refresh" content="5;url=signup.jsp">
 	</head>
 <body>
 
-<!-- Header -->
-<%@include file="_header.jsp"%>
- 
-<% 
-String  str2  = (String) session.getAttribute("str1");        
-%>
-
-<!-- Body -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
-						<div class="inner">
-							<h1>Error!</h1>
-							<h2><%= str2 %> but dont worry, you'll get a new chance in 5 seconds...</h2>
-							
-						</div>
-					</section>
-
-<!-- Footer -->
-<%@include file="_footer.jsp"%> 
+	<!-- Header -->
+	<header id="header">
+		<a href="index.jsp" class="title">JSP Exercise</a>
+		<nav>
+			<ul>
+				<li><a href="index.jsp">Home</a></li>
+				<li><a href="signup.jsp">Signup</a></li>
+				<li><a href="Rates.jsp">List</a></li>
+			</ul>
+		</nav>
+	</header>
 
 </body>
 </html>
