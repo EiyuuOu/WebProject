@@ -11,5 +11,10 @@ public interface UserDao {
 	public int updateUser(int id, Users users);
 	public int deleteUser(int id);
 	public List<Users> getAllUsers();
+	
+	/**
+	 * Add Method to place Bets
+	 * Observer to observe change in match outcome?
+	 */
 
 }

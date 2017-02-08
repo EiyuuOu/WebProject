@@ -10,10 +10,11 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import com.fdmgroup.model.Match;
 import com.fdmgroup.model.Player;
 import com.fdmgroup.model.Users;
 
-public class AdminDaoImpl extends UserDaoImpl implements AdminUserDao, AdminPlayerDao {
+public class AdminDaoImpl extends UserDaoImpl implements AdminUserDao, AdminPlayerDao, AdminMatchDao {
 
 	EntityManagerFactory emf;
 	EntityManager em;
@@ -118,14 +119,58 @@ public class AdminDaoImpl extends UserDaoImpl implements AdminUserDao, AdminPlay
 		return playerList;
 	}
 	
-	public static void main(String args[]){
-		AdminDaoImpl dao = new AdminDaoImpl();
-		List<Player> playerList = dao.getAllPlayer();
+	/**
+	 * Match functionality
+	 * 
+	 */
+	
+	@Override
+	public int newMatch(Match match) {
+		EntityManager em = getEntityManager();
+		em.getTransaction().begin();
+		em.persist(match);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
 		
-		for (Player member : playerList) {
-			System.out.println(member);
-		}
+		return 1;
 	}
+
+	@Override
+	public Match getMatch(String playerOne, String playerTwo) {
+		EntityManager em = getEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createQuery("select match from Match match where match.playerOne=:playerOne AND match.playerTwo=:playerTwo", Match.class);
+		query.setParameter("playerOne", playerTwo).setParameter("playerTwo", playerTwo);
+		Match match = (Match) query.getSingleResult();
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+		return match;
+	}
+
+	@Override
+	public List<Match> getAllMatches() {
+		EntityManager em = getEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createQuery("select match from Match match", Match.class);
+		
+		List<Match> matchList = query.getResultList();
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+		
+		return matchList;
+	}
+	
+//	public static void main(String args[]){
+//		AdminDaoImpl dao = new AdminDaoImpl();
+//		List<Player> playerList = dao.getAllPlayer();
+//		
+//		for (Player member : playerList) {
+//			System.out.println(member);
+//		}
+//	}
 
 
 }
