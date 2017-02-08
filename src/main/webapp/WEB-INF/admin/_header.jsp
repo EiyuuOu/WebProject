@@ -18,9 +18,15 @@
 		<a href="index.jsp" class="title">JSP Exercise</a>
 		<nav>
 			<ul>
-				<li><a href="index.jsp">Home</a></li>
-				<li><a href="signup.jsp">Signup</a></li>
-				<li><a href="Rates.jsp">List</a></li>
+				<li><a href="AdminUser">User</a></li>
+				<li><a href="AdminPlayerList">Player</a></li>
+				<li><a href="AdminPlayer">Match</a></li>
+				<% 
+							if(request.getSession().getAttribute("admin")!=null){
+								out.print("<li><a href=logout>"+request.getSession().getAttribute("admin")+"(Bossman)</a></li>");
+							}
+		
+				%>
 			</ul>
 		</nav>
 	</header>

@@ -73,7 +73,8 @@ public class LoginController extends HttpServlet {
 				
 			}
 			if(user.getRole().equals(Roles.ADMIN)){
-				request.getSession().setAttribute("str5", "<br> Welcome back Grandmaster "+user.getFirstname()+" !");
+				request.getSession().setAttribute("admin", user.getUsername());
+				request.getSession().setAttribute("str5", "<br> Welcome back Bossman "+user.getFirstname()+" !");
 				getServletContext().getRequestDispatcher("/WEB-INF/admin/adminpanel.jsp").forward(request, response);
 				
 			}

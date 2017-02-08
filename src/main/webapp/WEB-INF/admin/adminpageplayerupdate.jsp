@@ -25,9 +25,21 @@
 		<!-- Main -->
 		  <section id="main" class="wrapper">
 			<div class="inner"> 
-				<h1 class="major">Add Player</h1>
-				<form method="post" action="AdminPlayer">
+				<h1 class="major">Update Player</h1>
+				<form method="post" action="AdminPlayerUpdate">
 
+					<div class="6u 12u$(xsmall)">
+						<input type="text" name="username" id="username" value=""
+							placeholder="Username" required />
+							<%
+						if (request.getSession().getAttribute("noUsername") != null) {
+							out.print("<label>" + request.getSession().getAttribute("noUsername") + "</label>");
+						}
+					%>
+					</div>
+					<br>
+					<br>
+					<br>
 					<div class="6u 12u$(xsmall)">
 						<input type="text" name="firstname" id="firstname" value=""
 							placeholder="First Name" required />
@@ -43,18 +55,13 @@
 						<input type="text" name="age" id="age" value="" placeholder="Age"
 							required />
 						<%
-							if (request.getSession().getAttribute("ageNumber") != null) {
-								out.print("<label>" + request.getSession().getAttribute("ageNumber") + "</label>");
+							if (request.getSession().getAttribute("ageNumber1") != null) {
+								out.print("<label>" + request.getSession().getAttribute("ageNumber1") + "</label>");
 							}
 						%>
 					</div>
 					</br>
 
-					<div class="6u 12u$(xsmall)">
-						<input type="text" name="username" id="username" value=""
-							placeholder="Username" required />
-					</div>
-					</br>
 					<div class="6u 12u$(xsmall)">
 						<input type="text" name="team" id="team" value=""
 							placeholder="Team" required />
@@ -93,11 +100,28 @@
 
 				<br>
 					<div class="12u$">
-						<ul class="actions">
-							<li><input type="submit" value="Add" class="special" /></li>
-							<li><input type="reset" value="Reset" /></li>
-						</ul>
-					</div>
+							<ul class="actions">
+								<li>
+								<input type="submit" id="option1" name="option1" value="Update"
+									class="special" /></li>
+								<li>
+								<input type="submit" id="option1" name="option1" value="Delete" class="special"/></li>
+							</ul>
+							<br>
+							<% 
+							if(request.getSession().getAttribute("playerupdated")!=null){
+								out.print("<label>"+request.getSession().getAttribute("playerupdated")+"</label>");
+							}
+								
+							%>
+							<% 
+							if(request.getSession().getAttribute("playerdeleted")!=null){
+								out.print("<label>"+request.getSession().getAttribute("playerdeleted")+"</label>");
+							}
+								
+							%>
+							
+						</div>
 				</form>
 
 

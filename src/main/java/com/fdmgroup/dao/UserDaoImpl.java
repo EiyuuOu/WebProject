@@ -44,38 +44,40 @@ public class UserDaoImpl implements UserDao{
 	
 	public int updateUser(int id, Users users) {
 		EntityManager em = getEntityManager();
+		Users user = em.find(Users.class, id);
 		em.getTransaction().begin();
-		
-		Query query = em.createQuery("update Users "
-				+ "set firstname=:firstname,"
-				+ "lastname=:lastname,"
-				+ "username=:username,"
-	
-				+ "email=:email"
-				+ "where id=:id");
-		query.setParameter("firstname", users.getFirstname());
-		query.setParameter("lastname", users.getLastname());
-		query.setParameter("username", users.getUsername());
-		query.setParameter("email", users.getEmail());
-		query.setParameter("id", id);
-		
-		int result = query.executeUpdate();
+		user.setFirstname(users.getFirstname());
+		user.setLastname(users.getLastname());
+		user.setUsername(users.getUsername());
+		user.setEmail(user.getEmail());
+//		
+//		Query query = em.createQuery("Update Users "
+//				+ "set firstname=:firstname,"
+//				+ "lastname=:lastname,"
+//				+ "username=:username,"
+//				+ "email=:email"
+//				+ "where id=:id");
+//		query.setParameter("firstname", users.getFirstname());
+//		query.setParameter("lastname", users.getLastname());
+//		query.setParameter("username", users.getUsername());
+//		query.setParameter("email", users.getEmail());
+//		query.setParameter("id", id);
+//		
 		em.getTransaction().commit();
 		em.close();
 		
-		return result;
+		return 1;
 	}
 	
-	public int deleteUser(String email) {
+	public int deleteUser(int id) {
 		EntityManager em = getEntityManager();
+		Users user = em.find(Users.class, id);
 		em.getTransaction().begin();
-		Query query = em.createQuery("delete users from Users users where users.email=:email", Users.class);
-		query.setParameter("email", email);
-		int result = query.executeUpdate();
+		em.remove(user);
 		em.getTransaction().commit();
 		em.close();
 		
-		return result;
+		return 1;
 		
 	}
 	public List<Users> getAllUsers() {

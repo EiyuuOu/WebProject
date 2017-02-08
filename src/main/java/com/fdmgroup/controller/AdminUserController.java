@@ -3,7 +3,7 @@ package com.fdmgroup.controller;
 import java.io.IOException;
 
 import javax.persistence.NoResultException;
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +25,7 @@ public class AdminUserController extends HttpServlet {
      */
     public AdminUserController() {
         super();
-        dao = new AdminDaoImpl();
+        this.dao = new AdminDaoImpl();
     }
 
 	/**

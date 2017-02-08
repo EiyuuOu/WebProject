@@ -21,7 +21,7 @@
 <div id="wrapper">
 <section id="main" class="wrapper">
 			<div class="inner">
-				<h1 class="major">Register</h1>
+				<h1 class="major">Update Profile</h1>
 				<form method="post" action="UserUpdateController">
 					<div class="6u 12u$(xsmall)">
 							<input type="hidden" name="id" value="<%= session.getAttribute("id") %>"
@@ -73,10 +73,26 @@
 						-->
 						<div class="12u$">
 							<ul class="actions">
-								<li><input type="submit" value="Register"
+								<li><input type="hidden" name="hidden" value="update"/>
+								<input type="submit" id="option" name="option" value="Update"
 									class="special" /></li>
-								<li><input type="reset" value="Reset" /></li>
+								<li><input type="hidden" name="hidden" value="delete"/>
+								<input type="submit" id="option" name="option" value="Delete" class="special"/></li>
 							</ul>
+							<br>
+							<% 
+							if(request.getSession().getAttribute("updated")!=null){
+								out.print("<label>"+request.getSession().getAttribute("updated")+"</label>");
+							}
+								
+							%>
+							<% 
+							if(request.getSession().getAttribute("deleted")!=null){
+								out.print("<label>"+request.getSession().getAttribute("deleted")+"</label>");
+							}
+								
+							%>
+							
 						</div>
 				</form>
 				

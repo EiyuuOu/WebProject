@@ -1,7 +1,6 @@
 package com.fdmgroup.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.persistence.NoResultException;
 import javax.servlet.ServletException;
@@ -50,7 +49,7 @@ public class RegistrationController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// User Registration
-		PrintWriter out = response.getWriter();
+		//PrintWriter out = response.getWriter();
 
 		
 		String firstname = request.getParameter("firstname");

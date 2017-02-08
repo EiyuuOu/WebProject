@@ -1,7 +1,7 @@
 package com.fdmgroup.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -41,16 +41,12 @@ public class UserUpdateController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-//		HttpSession session = request.getSession();
-//		
-//		session.getAttribute("id");
-//		System.out.println(session.getAttribute("id"));
-//		int id = (int) session.getAttribute("id");	
-//		System.out.print(session.getAttribute("id"));
 		
-		String id1 = request.getParameter("id");
-		int id = Integer.valueOf(id1);
+		HttpSession session = request.getSession();
+		String option = request.getParameter("option");
+
+		int id = (int) session.getAttribute("id");	
+
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String username = request.getParameter("username");
@@ -59,9 +55,19 @@ public class UserUpdateController extends HttpServlet {
 		
 		Users user = new Users(firstname, lastname, username, "password", email, 300);
 		
-		dao.updateUser(id, user);
+		if(option.equals("Update")){
+			
+			dao.updateUser(id, user);
+			request.getSession().setAttribute("updated", "<font color=#006600>Your data was Updated!</font>");
+			getServletContext().getRequestDispatcher("userupdate.jsp").forward(request, response);
+		} 
+		else if (option.equals("Delete")){
+			dao.deleteUser(id);
+			request.getSession().setAttribute("deleted", "<font color=#990000>You were deleted!</font>");
+			getServletContext().getRequestDispatcher("index.jsp").forward(request, response);
+		}
 		
-		out.print("success");
+		
 	}
 
 }

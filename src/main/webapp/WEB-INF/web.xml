@@ -41,6 +41,24 @@
   	<description></description>
   	<servlet-class>com.fdmgroup.controller.UserUpdateController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AdminPlayerController</servlet-name>
+  	<display-name>AdminPlayerController</display-name>
+  	<description></description>
+  	<servlet-class>com.fdmgroup.controller.AdminPlayerController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AdminPlayerUpdateController</servlet-name>
+  	<display-name>AdminPlayerUpdateController</display-name>
+  	<description></description>
+  	<servlet-class>com.fdmgroup.controller.AdminPlayerUpdateController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AdminPlayerListController</servlet-name>
+  	<display-name>AdminPlayerListController</display-name>
+  	<description></description>
+  	<servlet-class>com.fdmgroup.controller.AdminPlayerListController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>RegistrationController</servlet-name>
   	<url-pattern>/register</url-pattern>
@@ -64,5 +82,17 @@
   <servlet-mapping>
   	<servlet-name>UserUpdateController</servlet-name>
   	<url-pattern>/UserUpdateController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AdminPlayerController</servlet-name>
+  	<url-pattern>/AdminPlayer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AdminPlayerUpdateController</servlet-name>
+  	<url-pattern>/AdminPlayerUpdate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AdminPlayerListController</servlet-name>
+  	<url-pattern>/AdminPlayerList</url-pattern>
   </servlet-mapping>
 </web-app>

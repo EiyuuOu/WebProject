@@ -23,12 +23,12 @@ String  str2  = (String) session.getAttribute("str5");
 
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
-							<h1>Thats the admin panel</h1>
+							<h1>Yep, you're the Admin.</h1>
 							<h2> <%= str2 %> </h2>
 							<br>
 							<h3>Click <a href="AdminUser">here</a> to change Userdata <br>
 								Click <a href="WEB-INF/admin/adminpagematches.jsp">here</a> to change matches <br>
-								Click <a href="WEB-INF/admin/adminpageplayer.jsp">here</a> to change Players</h3>
+								Click <a href="AdminPlayer">here</a> to Create Players, or <a href="AdminPlayerUpdate">here</a> to Update and Delete them.</h3>
 							
 						</div>
 					</section>

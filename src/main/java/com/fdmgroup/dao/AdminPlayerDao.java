@@ -10,8 +10,8 @@ public interface AdminPlayerDao {
 	
 	public boolean newPlayer(Player player);
 	public Player getPlayer(String username);
-	public int updatePlayer(String username, Player player);
-	public int deletePlayer(String username);
+	public int updatePlayer(int id, Player player);
+	public int deletePlayer(int id);
 	public List<Player> getAllPlayer();
 
 }
