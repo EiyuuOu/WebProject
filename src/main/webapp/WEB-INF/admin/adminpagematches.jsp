@@ -1,12 +1,98 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Generic - Hyperspace by HTML5 UP</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+<link rel="stylesheet" href="css/main.css" />
+<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 </head>
 <body>
 
+	<!-- Header -->
+	<%@include file="_header.jsp"%>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		  <section id="main" class="wrapper">
+			<div class="inner"> 
+				<h1 class="major">Add Match</h1>
+				<form method="post" action="AdminMatch">
+
+
+					<div class="6u 12u$(xsmall)">
+						<input type="text" name="username1" id="username1" value=""
+							placeholder="Player One" required />
+					</div>
+					</br>
+					<div class="6u 12u$(xsmall)">
+						<input type="text" name="rate1" id="rate1" value="" placeholder="Rate One"
+							required />
+					</div>
+					</br>
+					<div class="6u 12u$(xsmall)">
+						<input type="text" name="username2" id="username" value=""
+							placeholder="Player Two" required />
+					</div>
+					</br>
+					<div class="6u 12u$(xsmall)">
+						<input type="text" name="rate2" id="rate2" value="" placeholder="Rate Two"
+							required />
+						<%
+							if (request.getSession().getAttribute("rateNumber") != null) {
+								out.print("<label>" + request.getSession().getAttribute("rateNumber") + "</label>");
+							}
+						%>
+					</div>
+					</br>
+		
+					<%
+						if (request.getSession().getAttribute("matchAdded") != null) {
+							out.print("<label>" + request.getSession().getAttribute("matchAdded") + "</label>");
+						}
+					%>
+
+				<br>
+					<div class="12u$">
+						<ul class="actions">
+							<li><input type="submit" value="Add" class="special" /></li>
+							<li><input type="reset" value="Reset" /></li>
+						</ul>
+					</div>
+				</form>
+
+
+
+			</div>
+		  </section>
+
+	</div> 
+	<!-- Footer -->
+	<footer id="footer" class="wrapper alt">
+		<div class="inner">
+			<ul class="menu">
+				<li>&copy; Untitled. All rights reserved.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
+
 </body>
-</html>

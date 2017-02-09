@@ -20,7 +20,7 @@
 			<ul>
 				<li><a href="AdminUser">User</a></li>
 				<li><a href="AdminPlayerList">Player</a></li>
-				<li><a href="AdminPlayer">Match</a></li>
+				<li><a href="AdminMatch">Match</a></li>
 				<% 
 							if(request.getSession().getAttribute("admin")!=null){
 								out.print("<li><a href=logout>"+request.getSession().getAttribute("admin")+"(Bossman)</a></li>");

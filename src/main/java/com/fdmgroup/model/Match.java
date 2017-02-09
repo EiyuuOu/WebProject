@@ -82,51 +82,6 @@ public class Match {
 		this.winner = winner;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		long temp;
-		temp = Double.doubleToLongBits(oddsPlayerOne);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(oddsPlayerTwo);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((playerOne == null) ? 0 : playerOne.hashCode());
-		result = prime * result + ((playerTwo == null) ? 0 : playerTwo.hashCode());
-		result = prime * result + ((winner == null) ? 0 : winner.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Match other = (Match) obj;
-		if (id != other.id)
-			return false;
-		if (Double.doubleToLongBits(oddsPlayerOne) != Double.doubleToLongBits(other.oddsPlayerOne))
-			return false;
-		if (Double.doubleToLongBits(oddsPlayerTwo) != Double.doubleToLongBits(other.oddsPlayerTwo))
-			return false;
-		if (playerOne == null) {
-			if (other.playerOne != null)
-				return false;
-		} else if (!playerOne.equals(other.playerOne))
-			return false;
-		if (playerTwo == null) {
-			if (other.playerTwo != null)
-				return false;
-		} else if (!playerTwo.equals(other.playerTwo))
-			return false;
-		if (winner != other.winner)
-			return false;
-		return true;
-	}
 
 	@Override
 	public String toString() {

@@ -29,7 +29,7 @@ String  str2  = (String) session.getAttribute("str4");
 											%> </h2>
 							
 							<br>
-							<h3>View upcoming Matches <a href="upcomingmatches.jsp">here</a></h3>
+							<h3>View upcoming Matches <a href="UserMatch">here</a></h3>
 							
 						</div>
 					</section>

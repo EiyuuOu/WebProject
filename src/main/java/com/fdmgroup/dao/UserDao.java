@@ -2,6 +2,7 @@ package com.fdmgroup.dao;
 
 import java.util.List;
 
+import com.fdmgroup.model.Match;
 import com.fdmgroup.model.Users;
 
 public interface UserDao {
@@ -11,6 +12,7 @@ public interface UserDao {
 	public int updateUser(int id, Users users);
 	public int deleteUser(int id);
 	public List<Users> getAllUsers();
+	
 	
 	/**
 	 * Add Method to place Bets

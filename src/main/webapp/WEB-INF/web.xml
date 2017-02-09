@@ -59,6 +59,18 @@
   	<description></description>
   	<servlet-class>com.fdmgroup.controller.AdminPlayerListController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AdminMatchController</servlet-name>
+  	<display-name>AdminMatchController</display-name>
+  	<description></description>
+  	<servlet-class>com.fdmgroup.controller.AdminMatchController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UserMatchController</servlet-name>
+  	<display-name>UserMatchController</display-name>
+  	<description></description>
+  	<servlet-class>com.fdmgroup.controller.UserMatchController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>RegistrationController</servlet-name>
   	<url-pattern>/register</url-pattern>
@@ -94,5 +106,13 @@
   <servlet-mapping>
   	<servlet-name>AdminPlayerListController</servlet-name>
   	<url-pattern>/AdminPlayerList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AdminMatchController</servlet-name>
+  	<url-pattern>/AdminMatch</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserMatchController</servlet-name>
+  	<url-pattern>/UserMatch</url-pattern>
   </servlet-mapping>
 </web-app>

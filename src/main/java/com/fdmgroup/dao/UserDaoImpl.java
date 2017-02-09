@@ -7,9 +7,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.fdmgroup.model.Match;
+import com.fdmgroup.model.Matchwinner;
 import com.fdmgroup.model.Users;
 
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao, UserMatchDao{
 	
 	EntityManagerFactory emf;
 	EntityManager em;
@@ -42,6 +44,7 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 	
+	
 	public int updateUser(int id, Users users) {
 		EntityManager em = getEntityManager();
 		Users user = em.find(Users.class, id);
@@ -50,19 +53,7 @@ public class UserDaoImpl implements UserDao{
 		user.setLastname(users.getLastname());
 		user.setUsername(users.getUsername());
 		user.setEmail(user.getEmail());
-//		
-//		Query query = em.createQuery("Update Users "
-//				+ "set firstname=:firstname,"
-//				+ "lastname=:lastname,"
-//				+ "username=:username,"
-//				+ "email=:email"
-//				+ "where id=:id");
-//		query.setParameter("firstname", users.getFirstname());
-//		query.setParameter("lastname", users.getLastname());
-//		query.setParameter("username", users.getUsername());
-//		query.setParameter("email", users.getEmail());
-//		query.setParameter("id", id);
-//		
+	
 		em.getTransaction().commit();
 		em.close();
 		
@@ -92,7 +83,64 @@ public class UserDaoImpl implements UserDao{
 		
 		return usersList;
 	}
-
+	@Override
+	public List<Match> getAllMatches() {
+		EntityManager em = getEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createQuery("select match from Match match", Match.class);
+		
+		List<Match> matchList = (List<Match>)query.getResultList();
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+		
+		return matchList;
+	}
+	
+	/*
+	 * TODO Implement bet function
+	 */
+//	@Override
+//	public double makeBet(int id, String playerName, double amount) {
+//		EntityManager em = getEntityManager();
+//		double balanceChange;
+//		em.getTransaction().begin();
+//		Match match = em.find(Match.class, id);
+//		
+//		if ((playerName.equalsIgnoreCase(match.getPlayerNameOne() )&& (match.getWinner() == Matchwinner.PLAYERONE))){
+//			balanceChange = amount*match.getOddsPlayerOne();
+//			return balanceChange;
+//		}
+//		else if ((playerName.equalsIgnoreCase(match.getPlayerNameOne() )&& (match.getWinner() == Matchwinner.PLAYERTWO))){
+//			balanceChange = -amount;
+//			
+//			return balanceChange;
+//		}
+//		else if ((playerName.equalsIgnoreCase(match.getPlayerNameTwo() )&& (match.getWinner() == Matchwinner.PLAYERTWO))){
+//			balanceChange = amount*match.getOddsPlayerTwo();
+//			return balanceChange;
+//		}
+//		else if ((playerName.equalsIgnoreCase(match.getPlayerNameTwo() )&& (match.getWinner() == Matchwinner.PLAYERONE))){
+//			balanceChange = -amount;
+//			
+//			return balanceChange;
+//		}
+//		else return amount;
+//		
+//		return 0;
+//	}
+//
+//	@Override
+//	public Users userBalanceChange(int id, double amount) {
+//		EntityManager em = getEntityManager();
+//		Users user = em.find(Users.class, id);
+//		em.getTransaction().begin();
+//		user.setBalance(user.getBalance()+amount);
+//		em.getTransaction().commit();
+//		em.close();
+//		return user
+//		return null;
+//	}
 
 //	public static void main(String[] args) {
 //		UserDaoImpl dao = new UserDaoImpl();

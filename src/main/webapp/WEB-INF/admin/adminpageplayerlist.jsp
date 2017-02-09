@@ -1,4 +1,3 @@
-<%@page import="java.util.ArrayList"%>
 <%@page import="com.fdmgroup.model.Player"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -22,7 +21,7 @@
 
 
 
-	<section id="intro" class="wrapper style1 fullscreen fade-up">
+	
 	<div class="inner">
 		<h1>Here's a list of all Players in the Tournament</h1>
 		<h3>Alternate</h3>
@@ -40,9 +39,9 @@
 					</tr>
 				</thead>
 				<tbody>
-					  
-					<%
-					List<Player> playerList = (List<Player>)request.getAttribute("list");
+
+											<%
+					List<Player> playerList = (List<Player>)request.getSession().getAttribute("liste");
 					
 					for(Player player : playerList){
 						
@@ -55,42 +54,17 @@
 						out.println("<td>"+player.getNationality()+"</td>");
 						out.println("<td>"+player.getRace()+"</td>");
 						out.println("</tr>");
-					}
+					} %>		
 
-					%>
 					
-					<tr>
-						<td>Item Two</td>
-						<td>Vis ac commodo adipiscing arcu aliquet.</td>
-						<td>19.99</td>
-					</tr>
-					<tr>
-						<td>Item Three</td>
-						<td>Morbi faucibus arcu accumsan lorem.</td>
-						<td>29.99</td>
-					</tr>
-					<tr>
-						<td>Item Four</td>
-						<td>Vitae integer tempus condimentum.</td>
-						<td>19.99</td>
-					</tr>
-					<tr>
-						<td>Item Five</td>
-						<td>Ante turpis integer aliquet porttitor.</td>
-						<td>29.99</td>
-					</tr>
 				</tbody>
-				<tfoot>
-					<tr>
-						<td colspan="2"></td>
-						<td>100.00</td>
-					</tr>
-				</tfoot>
+				
 			</table>
 
 
 		</div>
-	</section>
+		</div>
+	
 
 	<!-- Footer -->
 	<%@include file="_footer.jsp"%>

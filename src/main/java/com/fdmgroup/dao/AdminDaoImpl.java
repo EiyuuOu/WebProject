@@ -111,7 +111,7 @@ public class AdminDaoImpl extends UserDaoImpl implements AdminUserDao, AdminPlay
 		em.getTransaction().begin();
 		Query query = em.createQuery("select player from Player player", Player.class);
 		
-		List<Player> playerList = query.getResultList();
+		List<Player> playerList = (List<Player>)query.getResultList();
 		em.getTransaction().commit();
 		em.close();
 		emf.close();
